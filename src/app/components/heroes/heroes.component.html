@@ -1,18 +1,8 @@
 <h1>Héroes <small>Marvel y DC</small></h1>
 <hr>
 
-<div class="row row-cols-1 row-cols-md-3 g-4" data-masonry='{"percentPosition": true }'>
-    <div class="col" *ngFor="let heroe of heroes; let i = index;">
-        <div class="card h-100 animated fadeIn fast">
-            <img [src]="heroe.img" class="card-img-top" [alt]="heroe.nombre">
-            <div class="card-body">
-                <h5 class="card-title">{{ heroe.nombre }}</h5>
-                <p class="card-text text-justify">{{ heroe.bio }}</p>   
-            </div>
-            <div class="px-3 pb-3">
-                <p class="card-text"><small class="text-muted">{{ heroe.aparicion }}</small></p>
-                <button (click)="showHero(i);" class="btn btn-outline-primary w-100">Ver más...</button>
-            </div>
-        </div>
-    </div>      
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let hero of heroes; let i = index;">
+        <app-hero-card [hero]="hero" [idx]="i"></app-hero-card>
+    </div>
 </div>
