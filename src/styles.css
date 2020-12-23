@@ -10,6 +10,9 @@ body{
     width: 120px;
 }
 
+.text-justify{
+  text-align: justify;
+}
 /* Animaciones */
 .animated {
     -webkit-animation-duration: 1s;
