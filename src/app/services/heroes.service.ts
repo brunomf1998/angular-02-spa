@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class HeroesService {
-    private heroes: Heroe[] = [
+
+  private heroes: Heroe[] = [
         {
           nombre: 'Aquaman',
           bio: 'El poder más reconocido de Aquaman es la capacidad telepática para comunicarse con la vida marina, la cual puede convocar a grandes distancias.',
@@ -53,22 +54,30 @@ export class HeroesService {
           casa: 'Marvel'
         }
       ];
-    constructor(){
-        console.log('Servicio listo para usar!!!');
-    }
-    getHeroes = (): Heroe[] => this.heroes;
-    getHero = (idx: number): Heroe => this.heroes[idx];
-    searchForHeroes = (term: string): Heroe[] => {
-      const heroesArr: Heroe[] = [];
-      term = term.toLowerCase();
-      for (const hero of this.heroes){
-        const name = hero.nombre.toLowerCase();
-        if (name.indexOf(term) >= 0) {
-          heroesArr.push(hero);
-        }
+
+  constructor(){
+      console.log('Servicio listo para usar!!!');
+  }
+
+  getHeroes = (): Heroe[] => this.heroes;
+
+  getHero = (idx: number) => this.heroes[idx];
+
+  searchForHeroes = (term: string): Heroe[] => {
+    const heroesArr: Heroe[] = [];
+    term = term.toLowerCase();
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < this.heroes.length; i++) {
+      const hero = this.heroes[i];
+      const name = hero.nombre.toLowerCase();
+      if (name.indexOf(term) >= 0) {
+        hero.idx = i;
+        heroesArr.push(hero);
       }
-      return heroesArr;
     }
+    return heroesArr;
+  }
+
 }
 
 export interface Heroe {
@@ -77,4 +86,5 @@ export interface Heroe {
     img: string;
     aparicion: string;
     casa: string;
+    idx?: number;
 }

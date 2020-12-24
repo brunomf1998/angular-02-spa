@@ -7,10 +7,13 @@ import { HeroesService, Heroe } from '../../services/heroes.service';
   templateUrl: './heroes.component.html'
 })
 export class HeroesComponent implements OnInit {
+
   heroes: Heroe[] = [];
+
   constructor(private heroesService: HeroesService, private router: Router) { }
+
   ngOnInit(): void {
     this.heroes = this.heroesService.getHeroes();
+
   }
-  showHero = (idx: number) => this.router.navigate(['/hero', idx]);
 }

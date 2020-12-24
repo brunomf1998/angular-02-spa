@@ -11,7 +11,7 @@ const APP_ROUTES: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'heroes', component: HeroesComponent },
     { path: 'hero/:id', component: HeroComponent },
-    { path: 'result-search/:name', component: SearchComponent },
+    { path: 'search/:name', component: SearchComponent },
     { path: '**', pathMatch: 'full', redirectTo: 'home'}
 ];
 export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);
